@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
         final FirebaseUser user  = firebaseAuth.getCurrentUser();
         try {
-            textView.setText("Hi " + user.getDisplayName());
+            textView.setText("Hi " + user.getEmail());
         } catch (NullPointerException e) {}
 
         btnDeleteUser.setOnClickListener(new View.OnClickListener() {
