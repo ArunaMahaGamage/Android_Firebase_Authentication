@@ -18,18 +18,19 @@ import com.google.firebase.auth.FirebaseAuth;
 public class LoginActivity extends AppCompatActivity {
 
     EditText emails,passwords;
-    Button registerButton,loginButton;
+    Button registerButton,loginButton, reset_password;
     FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_login);
 
         emails = (EditText) findViewById(R.id.uyeEmail);
         passwords = (EditText) findViewById(R.id.uyeParola);
         registerButton = (Button) findViewById(R.id.yeniUyeButton);
         loginButton = (Button) findViewById(R.id.uyeGirisButton);
+        reset_password = (Button) findViewById(R.id.reset_password);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -76,8 +77,17 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        reset_password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),NewPassActivity.class));
+            }
+        });
+
         if(firebaseAuth.getCurrentUser()!=null){
-            Toast.makeText(getApplicationContext(),"You Have Logged From : " + firebaseAuth.getCurrentUser().getEmail() ,Toast.LENGTH_SHORT).show();
+            try {
+                Toast.makeText(getApplicationContext(), "You Have Logged From : " + firebaseAuth.getCurrentUser().getEmail(), Toast.LENGTH_SHORT).show();
+            } catch (NullPointerException e) {}
             startActivity(new Intent(getApplicationContext(),MainActivity.class));
         }
     }
