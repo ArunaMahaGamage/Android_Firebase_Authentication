@@ -73,16 +73,22 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = emails.getText().toString();
-                String password = passwords.getText().toString();
-                firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener( new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                try {
+                    String email = emails.getText().toString();
+                    String password = passwords.getText().toString();
+                    firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            }
                         }
-                    }
-                });
+                    });
+                } catch (NullPointerException e) {
+                    Toast.makeText(getApplicationContext(), "Please Add Email and Password", Toast.LENGTH_SHORT).show();
+                } catch (IllegalArgumentException e) {
+                    Toast.makeText(getApplicationContext(), "Please Add Email and Password", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
