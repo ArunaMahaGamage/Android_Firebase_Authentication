@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SiginUpActivity">
+    tools:context=".SignUpActivity">
 
 
     <EditText
@@ -18,7 +18,7 @@
         tools:layout_editor_absoluteX="0dp" />
 
     <EditText
-        android:id="@+id/rt_Email"
+        android:id="@+id/et_Email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
@@ -36,7 +36,7 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        app:layout_constraintTop_toBottomOf="@+id/rt_Email"
+        app:layout_constraintTop_toBottomOf="@+id/et_Email"
         tools:layout_editor_absoluteX="0dp" />
 
     <Button
