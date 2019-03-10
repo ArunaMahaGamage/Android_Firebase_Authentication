@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".NewPassActivity"></activity>
+        <activity android:name=".NewPassActivity" />
+        <activity android:name=".SiginUpActivity"></activity>
     </application>
 
 </manifest>
